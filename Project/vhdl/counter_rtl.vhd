@@ -14,7 +14,7 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.std_logic_unsigned.all;	--contains + operator
 
-architecture rtl of DFlipFlop is
+architecture rtl of counter is
 	signal s_cntr : std_logic_vector(0 to 11) := "000000000000";	-- combined counter for all digits 4x3=12bit
 	signal s_100hzclk : std_logic;									-- scaled 100Hz clock signal
 	signal s_clkcount : integer := 0;								-- counter for scaling clock signal

@@ -11,5 +11,5 @@ entity counter is
         cntr0_o		: out std_logic_vector (0 to 2);	-- Digit 0
         cntr1_o		: out std_logic_vector (0 to 2);	-- Digit 1
         cntr2_o		: out std_logic_vector (0 to 2);	-- Digit 2
-        cntr3_o		: out std_logic_vector (0 to 2);	-- Digit 3
+        cntr3_o		: out std_logic_vector (0 to 2));	-- Digit 3
 end counter;
