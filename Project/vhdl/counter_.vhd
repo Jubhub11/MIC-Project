@@ -1,7 +1,29 @@
+-------------------------------------------------------------------
+--          Microelectronic Design | FH Technikum Wien           --
+--                        COUNTER PROJECT                        --
+-------------------------------------------------------------------
+--       Author: Bauer Julian  (el23b071@technikum-wien.at)      --
+--               Gundacker Max (el23b074@technikum-wien.at)      --
+--                                                               --
+--         Date: 24 Jun 2025                                     --
+--                                                               --
+--  Design Unit: Counter Unit (Entity)                           --
+--                                                               --
+--     Filename: counter_.vhd                                    --
+--                                                               --
+--      Version: 1.0                                             --
+--                                                               --
+--  Description: The counter unit implements a 4 digit octal     --
+--               counter running at a frequency of 100Hz.        --
+--               It is a part of the counter project. This file  --
+--               contains the entity declaration of the counter. --
+-------------------------------------------------------------------
+
 library IEEE;
 use IEEE.std_logic_1164.all;
 
 entity counter is
+  generic (c_clk : natural := 1000);				-- constant to easily adjust external clock. Useful for simulation
   port (clk_i		: in  std_logic;					-- system clock 100MHz
         reset_i		: in  std_logic;					-- reset
         cntrhold_i	: in  std_logic;					-- when 1 -> counter holds value

@@ -1,14 +1,23 @@
-------------------------------------
--- Class 3 Example 1: D/JK-FlipFlop
-------------------------------------
--- Version: 1.0
--- Author: Max Gundacker
--- Date: 05 May 2025
--- Filename: FlipFlop_rtl_cfg.vhd
-------------------------------------
--- Description: configuration of 
--- FlipFlop for example 1
-------------------------------------
+-------------------------------------------------------------------
+--          Microelectronic Design | FH Technikum Wien           --
+--                        COUNTER PROJECT                        --
+-------------------------------------------------------------------
+--       Author: Bauer Julian  (el23b071@technikum-wien.at)      --
+--               Gundacker Max (el23b074@technikum-wien.at)      --
+--                                                               --
+--         Date: 24 Jun 2025                                     --
+--                                                               --
+--  Design Unit: Counter Unit (Config)                           --
+--                                                               --
+--     Filename: counter_rtl_cfg.vhd                             --
+--                                                               --
+--      Version: 1.0                                             --
+--                                                               --
+--  Description: The counter unit implements a 4 digit octal     --
+--               counter running at a frequency of 100Hz.        --
+--               It is a part of the counter project. This file  --
+--               contains the rtl configuration of the counter.  --
+-------------------------------------------------------------------
 
 configuration counter_rtl_cfg of counter is
 	for rtl

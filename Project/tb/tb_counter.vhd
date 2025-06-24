@@ -1,3 +1,24 @@
+-------------------------------------------------------------------
+--          Microelectronic Design | FH Technikum Wien           --
+--                        COUNTER PROJECT                        --
+-------------------------------------------------------------------
+--       Author: Bauer Julian  (el23b071@technikum-wien.at)      --
+--               Gundacker Max (el23b074@technikum-wien.at)      --
+--                                                               --
+--         Date: 24 Jun 2025                                     --
+--                                                               --
+--  Design Unit: Counter Unit (Testbench)                        --
+--                                                               --
+--     Filename: tb_counter.vhd                                  --
+--                                                               --
+--      Version: 1.1                                             --
+--                                                               --
+--  Description: The counter unit implements a 4 digit octal     --
+--               counter running at a frequency of 100Hz.        --
+--               It is a part of the counter project. This file  --
+--               contains the testbench for the counter unit.    --
+-------------------------------------------------------------------
+
 library IEEE;
 use IEEE.std_logic_1164.all;
 
@@ -30,6 +51,9 @@ architecture sim of tb_counter is
   signal cntr1_o		: std_logic_vector (0 to 2);
   signal cntr2_o		: std_logic_vector (0 to 2);
   signal cntr3_o		: std_logic_vector (0 to 2);
+  
+  constant c_Tclk : time := 1 ms; -- external clock period for simulation
+
 
 begin
 
@@ -46,13 +70,13 @@ begin
               cntr2_o		=> cntr2_o,
               cntr3_o		=> cntr3_o);
 
-  ----- 100MHz clock signal generator -----
+  ----- clock signal generator -----
   p_clk : process
   begin
 	clk_i <= '0';
-	wait for 5 ns;
+	wait for (c_Tclk/2);
 	clk_i <= '1';
-	wait for 5 ns;
+	wait for (c_Tclk/2);
   end process p_clk;
   
   ----- Test scenarios -----
@@ -65,30 +89,35 @@ begin
     cntrup_i <= '0';
     cntrdown_i <= '0';
     wait for 1 sec;
+	-- counting up
     reset_i <= '0';
     cntrhold_i <= '0';
     cntrclear_i <= '0';
     cntrup_i <= '1';
     cntrdown_i <= '0';
     wait for 1 sec;
+	-- counting down
     reset_i <= '0';
     cntrhold_i <= '0';
     cntrclear_i <= '0';
     cntrup_i <= '0';
     cntrdown_i <= '1';
     wait for 2 sec;
+	-- hold counter
     reset_i <= '0';
     cntrhold_i <= '1';
     cntrclear_i <= '0';
     cntrup_i <= '0';
     cntrdown_i <= '0';
     wait for 1 sec;
+	-- clear counter
     reset_i <= '0';
     cntrhold_i <= '0';
     cntrclear_i <= '1';
     cntrup_i <= '0';
     cntrdown_i <= '0';
     wait for 1 sec;
+	-- reset
     reset_i <= '1';
     cntrhold_i <= '0';
     cntrclear_i <= '0';

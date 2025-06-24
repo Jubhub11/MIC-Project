@@ -1,14 +1,23 @@
-------------------------------------
--- Class 3 Example 1: D/JK-FlipFlop
-------------------------------------
--- Version: 1.0
--- Author: Max Gundacker
--- Date: 05 May 2025
--- Filename: FlipFlop_rtl.vhd
-------------------------------------
--- Description: architecture declaration 
--- of FlipFlop for example 1
-------------------------------------
+-------------------------------------------------------------------
+--          Microelectronic Design | FH Technikum Wien           --
+--                        COUNTER PROJECT                        --
+-------------------------------------------------------------------
+--       Author: Bauer Julian  (el23b071@technikum-wien.at)      --
+--               Gundacker Max (el23b074@technikum-wien.at)      --
+--                                                               --
+--         Date: 24 Jun 2025                                     --
+--                                                               --
+--  Design Unit: Counter Unit (RTL Architecture)                 --
+--                                                               --
+--     Filename: counter_rtl.vhd                                 --
+--                                                               --
+--      Version: 1.2                                             --
+--                                                               --
+--  Description: The counter unit implements a 4 digit octal     --
+--               counter running at a frequency of 100Hz.        --
+--               It is a part of the counter project. This file  --
+--               contains the rtl architecture of the counter.   --
+-------------------------------------------------------------------
 
 library IEEE;
 use IEEE.std_logic_1164.all;
@@ -27,7 +36,7 @@ begin	--rtl
 			s_100hzclk <= '0';
 			s_clkcount <= 0;
 		elsif (clk_i'event and clk_i = '1') then
-			if s_clkcount = 499999 then				-- scale is 1/1000000, so toggle every 500000 cycles
+			if s_clkcount = ((c_clk/200)-1) then				-- scale is 1/1000000, so toggle every 500000 cycles
 				s_clkcount <= 0;
 				s_100hzclk <= not s_100hzclk;
 			else
