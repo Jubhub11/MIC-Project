@@ -26,9 +26,6 @@ use IEEE.std_logic_unsigned.all;	--contains + operator
 architecture rtl of counter is
 	type std_logic_vector_array is array (natural range <>) of std_logic_vector(3 downto 0);	-- type declaration for counter array
 	signal s_cntr : std_logic_vector_array(0 to 3) := (others => (others => '0'));				-- all counters combined into array
-	--signal s_cntr1: std_logic_vector(0 to 3) := "0000";										-- counter for digit 0
-	--signal s_cntr2: std_logic_vector(0 to 3) := "0000";										-- counter for digit 0
-	--signal s_cntr3: std_logic_vector(0 to 3) := "0000";										-- counter for digit 0
 	signal s_100hzclk : std_logic;																-- scaled 100Hz clock signal
 	signal s_clkcount : integer := 0;															-- counter for scaling clock signal
 begin	--rtl
@@ -40,7 +37,7 @@ begin	--rtl
 			s_100hzclk <= '0';
 			s_clkcount <= 0;
 		elsif (clk_i'event and clk_i = '1') then
-			if s_clkcount = ((c_clk/20)-1) then				-- scale is 1/1000000, so toggle every 500000 cycles
+			if s_clkcount = ((c_clk/20)-1) then				-- scale based on configured external clock
 				s_clkcount <= 0;
 				s_100hzclk <= not s_100hzclk;
 			else
