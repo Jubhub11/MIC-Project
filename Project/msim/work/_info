@@ -1,0 +1,94 @@
+m255
+K4
+z2
+!s11e vcom 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/gulln/Desktop/MIC-Project/Project/msim
+Eio_ctrl
+w1750850333
+Z1 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z2 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+!i122 32
+R0
+8../vhdl/io_ctrl_.vhd
+F../vhdl/io_ctrl_.vhd
+l0
+L27 1
+VhPmR5G2QB:<SCzYAgA1hT1
+!s100 2:V[?F4:BacelVUEKPfa;3
+Z3 OV;C;2020.1;71
+32
+Z4 !s110 1750858184
+!i10b 1
+Z5 !s108 1750858184.000000
+!s90 -reportprogress|300|../vhdl/io_ctrl_.vhd|
+!s107 ../vhdl/io_ctrl_.vhd|
+!i113 1
+Z6 tExplicit 1 CvgOpt 0
+Artl
+w1750850697
+DEx4 work 7 io_ctrl 0 22 hPmR5G2QB:<SCzYAgA1hT1
+DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
+DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
+R1
+R2
+!i122 33
+8../vhdl/io_ctrl_rtl.vhd
+F../vhdl/io_ctrl_rtl.vhd
+l62
+L29 135
+VAV?4ENXl;R<NG]4Z]]RgD0
+!s100 82fYi=aAnTAlo_6E?JBkZ3
+R3
+32
+R4
+!i10b 1
+R5
+!s90 -reportprogress|300|../vhdl/io_ctrl_rtl.vhd|
+!s107 ../vhdl/io_ctrl_rtl.vhd|
+!i113 1
+R6
+Etb_io_ctrl
+Z7 w1750858176
+R1
+R2
+!i122 33
+R0
+Z8 8../tb/tb_io_ctrl.vhd
+Z9 F../tb/tb_io_ctrl.vhd
+l0
+L22 1
+Ve4dLDBA<BbCTKnj@k]:_12
+!s100 MIkiCm`MOVhGTzH7C923e3
+R3
+32
+R4
+!i10b 1
+R5
+Z10 !s90 -reportprogress|300|../tb/tb_io_ctrl.vhd|
+Z11 !s107 ../tb/tb_io_ctrl.vhd|
+!i113 1
+R6
+Asim
+R1
+R2
+Z12 DEx4 work 10 tb_io_ctrl 0 22 e4dLDBA<BbCTKnj@k]:_12
+!i122 33
+l69
+Z13 L25 115
+VIUCCL=?mY7E2LLP2`TzMD2
+!s100 4SFAQmf94AnSg4@KKfKnJ0
+R3
+32
+R4
+!i10b 1
+R5
+R10
+R11
+!i113 1
+R6
