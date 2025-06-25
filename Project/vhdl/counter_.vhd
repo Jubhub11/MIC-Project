@@ -30,8 +30,8 @@ entity counter is
         cntrclear_i	: in  std_logic;					-- when 1 -> counter set to 0000
         cntrup_i	: in  std_logic;					-- when 1 -> counts up
         cntrdown_i	: in  std_logic;					-- when 1 -> counts down
-        cntr0_o		: out std_logic_vector (0 to 2);	-- Digit 0
-        cntr1_o		: out std_logic_vector (0 to 2);	-- Digit 1
-        cntr2_o		: out std_logic_vector (0 to 2);	-- Digit 2
-        cntr3_o		: out std_logic_vector (0 to 2));	-- Digit 3
+        cntr0_o		: out std_logic_vector (0 to 3);	-- Digit 0
+        cntr1_o		: out std_logic_vector (0 to 3);	-- Digit 1
+        cntr2_o		: out std_logic_vector (0 to 3);	-- Digit 2
+        cntr3_o		: out std_logic_vector (0 to 3));	-- Digit 3
 end counter;

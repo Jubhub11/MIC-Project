@@ -34,10 +34,10 @@ architecture sim of tb_counter is
           cntrclear_i	: in  std_logic;					-- when 1 -> counter set to 0000
           cntrup_i		: in  std_logic;					-- when 1 -> counts up
           cntrdown_i	: in  std_logic;					-- when 1 -> counts down
-          cntr0_o		: out std_logic_vector (0 to 2);	-- Digit 0
-          cntr1_o		: out std_logic_vector (0 to 2);	-- Digit 1
-          cntr2_o		: out std_logic_vector (0 to 2);	-- Digit 2
-          cntr3_o		: out std_logic_vector (0 to 2)); 	-- Digit 3
+          cntr0_o		: out std_logic_vector (0 to 3);	-- Digit 0
+          cntr1_o		: out std_logic_vector (0 to 3);	-- Digit 1
+          cntr2_o		: out std_logic_vector (0 to 3);	-- Digit 2
+          cntr3_o		: out std_logic_vector (0 to 3)); 	-- Digit 3
   end component;
   
   ----- Declare the signals used stimulating the design's inputs/outputs -----
@@ -47,10 +47,10 @@ architecture sim of tb_counter is
   signal cntrclear_i	: std_logic;
   signal cntrup_i		: std_logic;
   signal cntrdown_i		: std_logic;
-  signal cntr0_o		: std_logic_vector (0 to 2);
-  signal cntr1_o		: std_logic_vector (0 to 2);
-  signal cntr2_o		: std_logic_vector (0 to 2);
-  signal cntr3_o		: std_logic_vector (0 to 2);
+  signal cntr0_o		: std_logic_vector (0 to 3);
+  signal cntr1_o		: std_logic_vector (0 to 3);
+  signal cntr2_o		: std_logic_vector (0 to 3);
+  signal cntr3_o		: std_logic_vector (0 to 3);
   
   constant c_Tclk : time := 1 ms; -- external clock period for simulation
 
