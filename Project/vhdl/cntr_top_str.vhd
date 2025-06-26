@@ -9,11 +9,13 @@
 --                                                               --
 --  Design Unit: Counter Unit (Testbench)                        --
 --                                                               --
---     Filename: cntr_top_.vhd                                  --
+--     Filename: cntr_top_str.vhd                                  --
 --                                                               --
 --      Version: 1.1                                             --
 --                                                               --
---  Description:    --
+--  Description: The cntr_top It integrates the IO
+--               controller and the counter unit, providing a
+--               complete solution for the counter functionality.
 -------------------------------------------------------------------
 
 library IEEE;
@@ -78,7 +80,7 @@ signal_sync: process(clk_i)
 	begin
 		if clk_i'event and clk_i = '1' then
 		--sw        <= sw_i;
-		BTNC      <= reset_i;
+		BTNC      <= reset_i;		---asyncron also noch fixen
 		leds_i    <= (others => '0');
 		leds_i(0) <= swsync(0); 
 		leds_i(1) <= swsync(1); 

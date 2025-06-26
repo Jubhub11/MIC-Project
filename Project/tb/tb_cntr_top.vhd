@@ -7,13 +7,16 @@
 --                                                               --
 --         Date: 24 Jun 2025                                     --
 --                                                               --
---  Design Unit: IO ctrl (Testbench)                             --
+--  Design Unit: cntr_top (Testbench)                             --
 --                                                               --
---     Filename: tb_io_ctrl.vhd                                  --
+--     Filename: tb_cntr_top.vhd                                  --
 --                                                               --
 --      Version: 1.1                                             --
 --                                                               --
---  Description:                                                  --
+--  Description: The tb_cntr_top entity is the testbench for the
+--               cntr_top unit. It simulates the behavior of the
+--               counter top-level design, providing inputs and
+--               checking the outputs to ensure correct functionality.
 -------------------------------------------------------------------
 
 library IEEE;
