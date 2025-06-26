@@ -61,7 +61,7 @@ architecture sim of tb_cntr_top is
     signal ss_sel_o    : std_logic_vector (0 to 3);  -- 7-Segment Selects output
     signal ss_o        : std_logic_vector (0 to 7);   -- 7-Segment LEDs output
     signal sw_i        : std_logic_vector(0 to 15);  -- Switches (16)
-    constant c_Tclk : time := 1 ms; -- external clock period for simulation
+    constant c_Tclk : time := 1 us; -- external clock period for simulation
 begin
 
   ----- Instantiate the counter design for testing -----

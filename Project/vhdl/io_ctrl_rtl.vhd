@@ -70,7 +70,12 @@ begin	--rtl
 			s_1khzclk <= '0';
 			s_clkcount <= 0;
 		elsif (clk_i'event and clk_i = '1') then
+			if s_clkcount = ((c_clk/2)-1) then				-- scale based on configured external clock
+				s_clkcount <= 0;
 				s_1khzclk <= not s_1khzclk;
+			else
+				s_clkcount <= s_clkcount + 1;
+			end if;
 		else
 		end if;
 	end process p_slowclk;

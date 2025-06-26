@@ -50,8 +50,7 @@ architecture sim of tb_counter is
   signal cntr0_o		: std_logic_vector (0 to 3);
   signal cntr1_o		: std_logic_vector (0 to 3);
   signal cntr2_o		: std_logic_vector (0 to 3);
-  signal cntr3_o		: std_logic_vector (0 to 3);
-  
+  signal cntr3_o		: std_logic_vector (0 to 3); 
   constant c_Tclk : time := 1 ms; -- external clock period for simulation
 
 

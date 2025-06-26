@@ -25,7 +25,7 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 
 entity io_ctrl is 
- generic (c_clk : natural := 50000);	--50000 1khz			-- constant to easily adjust external clock. Useful for simulation
+ generic (c_clk : natural := 1000);	--1.000.000/1.000 = 1kHz clock
   port (
     	--general inputs
         clk_i  : in   std_logic;    --system clock 100MHz
