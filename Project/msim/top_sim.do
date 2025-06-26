@@ -7,25 +7,19 @@
 #-                                                               -#
 #-         Date: 24 Jun 2025                                     -#
 #-                                                               -#
-#-  Design Unit: Counter Unit (ModelSim compile file)            -#
+#-  Design Unit: Counter Unit (ModelSim simulation file)         -#
 #-                                                               -#
-#-     Filename: counter_compile.do                              -#
+#-     Filename: counter_sim.do                                  -#
 #-                                                               -#
 #-      Version: 1.0                                             -#
 #-                                                               -#
 #-  Description: The counter unit implements a 4 digit octal     -#
 #-               counter running at a frequency of 100Hz.        -#
 #-               It is a part of the counter project. This file  -#
-#-               compiles the necessary elements for ModelSim.   -#
+#-               launches the simulation in ModelSim.            -#
 #-----------------------------------------------------------------#
 
-vcom ../vhdl/counter_.vhd
-vcom ../vhdl/counter_rtl.vhd
-vcom ../vhdl/counter_rtl_cfg.vhd
-
-vcom ../vhdl/io_ctrl_.vhd
-vcom ../vhdl/io_ctrl_rtl.vhd
-
-vcom ../vhdl/cntr_top_.vhd
-vcom ../vhdl/cntr_top_str.vhd
-vcom ../tb/tb_cntr_top.vhd
+vsim -t ns -lib work work.tb_cntr_top
+view *
+do top_wave.do # define signals to display in Wave window  
+run 1.1 sec

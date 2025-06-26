@@ -50,9 +50,9 @@ entity io_ctrl is
         --synchronization signal for Buttons
         pbsync_o : out   std_logic_vector (0 to 3); --4 buttons
         --control signals
-        cntr0_i : in std_logic_vector (0 to 2); -- Digit 1
-        cntr1_i : in std_logic_vector (0 to 2); -- Digit 2
-        cntr2_i : in std_logic_vector (0 to 2); -- Digit 3
-        cntr3_i : in std_logic_vector (0 to 2) -- Digit 4
+        cntr0_i : in std_logic_vector (0 to 3); -- Digit 1
+        cntr1_i : in std_logic_vector (0 to 3); -- Digit 2
+        cntr2_i : in std_logic_vector (0 to 3); -- Digit 3
+        cntr3_i : in std_logic_vector (0 to 3) -- Digit 4
   );
 end io_ctrl;

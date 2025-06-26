@@ -39,10 +39,10 @@ architecture sim of tb_io_ctrl is
       ss_sel_o     : out  std_logic_vector(0 to 3);   -- 7-Segment Selects output
       ss_o         : out  std_logic_vector(0 to 7);   -- 7-Segment LEDs output
       pbsync_o    : out  std_logic_vector (0 to 3);                   -- Button synchronization output
-      cntr0_i     : in   std_logic_vector(0 to 2);   -- Counter Digit 1 input
-      cntr1_i     : in   std_logic_vector(0 to 2);   -- Counter Digit 2 input
-      cntr2_i     : in   std_logic_vector(0 to 2);   -- Counter Digit 3 input
-      cntr3_i     : in   std_logic_vector(0 to 2)    -- Counter Digit 4 input
+      cntr0_i     : in   std_logic_vector(0 to 3);   -- Counter Digit 1 input
+      cntr1_i     : in   std_logic_vector(0 to 3);   -- Counter Digit 2 input
+      cntr2_i     : in   std_logic_vector(0 to 3);   -- Counter Digit 3 input
+      cntr3_i     : in   std_logic_vector(0 to 3)    -- Counter Digit 4 input
     );
      end component;
   ----- Declare the signals used stimulating the design's inputs/outputs -----
@@ -61,10 +61,10 @@ architecture sim of tb_io_ctrl is
   signal ss_sel_o     : std_logic_vector(0 to 3);  -- 7-Segment Selects output
   signal ss_o         : std_logic_vector(0 to 7);  -- 7-Segment LEDs output
   signal pbsync_o    : std_logic_vector(0 to 3);  -- Button synchronization output
-  signal cntr0_i     : std_logic_vector(0 to 2);  -- Counter Digit 1 input
-  signal cntr1_i     : std_logic_vector(0 to 2);  -- Counter Digit 2 input
-  signal cntr2_i     : std_logic_vector(0 to 2);  -- Counter Digit 3 input
-  signal cntr3_i     : std_logic_vector(0 to 2);  -- Counter Digit 4 input
+  signal cntr0_i     : std_logic_vector(0 to 3);  -- Counter Digit 1 input
+  signal cntr1_i     : std_logic_vector(0 to 3);  -- Counter Digit 2 input
+  signal cntr2_i     : std_logic_vector(0 to 3);  -- Counter Digit 3 input
+  signal cntr3_i     : std_logic_vector(0 to 3);  -- Counter Digit 4 input
   constant c_clk      : natural := 50000;  -- 50000 for 1kHz clock in simulation
 begin
 
@@ -77,9 +77,9 @@ begin
       BTNR_i       => '0',  -- Button Right
       BTNU_i       => '0',  -- Button Up
       BTND_i       => '0',  -- Button Down
-      SW_i         => (others => '0'),  -- Switches (16)
+      SW_i         => SW_i,  -- Switches (16)
       swsync_o     => swsync_o,  -- Switch synchronization output
-      LED_i        => (others => '0'),  -- LEDs (16)
+      LED_i        => LED_i,  -- LEDs (16)
       LED_o        => LED_o,  -- LEDs output
       ss_sel_o     => ss_sel_o,  -- 7-Segment Selects output
       ss_o         => ss_o,  -- 7-Segment LEDs output
@@ -103,7 +103,7 @@ begin
   ----- Test scenarios -----
   p_test : process
   begin
-    -- Reset the IO controller
+    wait for 100 ms;
     reset_i <= '1';
     SW_i <= "0000000000000000";
     BTNL_i <= '0';
@@ -111,15 +111,20 @@ begin
     BTNU_i <= '0';
     BTND_i <= '0';
     LED_i <= "0000000000000000";
-    ss_sel_o <= "0000";
-    ss_o <= "00000000";
+    cntr0_i <= "0000";  -- Initialize counter digit 1
+    cntr1_i <= "0000";  -- Initialize counter digit 2
+    cntr2_i <= "0000";  -- Initialize counter digit 3
+    cntr3_i <= "0000";  -- Initialize counter digit 4
     wait for 1 sec;
     -- Release reset
     reset_i <= '0';
     SW_i <= "0000000000000001";  -- Activate switch 0
+    cntr0_i <= "0001";
+        LED_i <= "0000011110000000";
     wait for 1 sec;
 
     SW_i <= "0000000000000010";  -- Activate switch 1
+    cntr0_i <= "0010";
     wait for 1 sec;
 
     -- Test button synchronization
@@ -129,9 +134,6 @@ begin
     BTNL_i <= '0';  -- Release Button Left
     wait for 1 sec;
 
-    -- Test 7-segment display output 
-    ss_sel_o <= "1110";  -- Select digit 4
-    ss_o <= "01111111";   -- Display some value ('0')
     wait for 1 sec;
 
   end process;

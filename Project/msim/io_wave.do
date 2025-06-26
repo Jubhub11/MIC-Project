@@ -21,11 +21,7 @@
 
 onerror {resume}
 add wave -noupdate -format logic /tb_io_ctrl/clk_i    
-add wave -noupdate -format logic /tb_io_ctrl/reset_i  
-add wave -noupdate -format logic /tb_io_ctrl/BTNL_i   
-add wave -noupdate -format logic /tb_io_ctrl/BTNR_i   
-add wave -noupdate -format logic /tb_io_ctrl/BTNU_i   
-add wave -noupdate -format logic /tb_io_ctrl/BTND_i   
+add wave -noupdate -format logic /tb_io_ctrl/reset_i   
 add wave -noupdate -format logic /tb_io_ctrl/SW_i     
 add wave -noupdate -format logic /tb_io_ctrl/swsync_o 
 add wave -noupdate -format logic /tb_io_ctrl/LED_i    
@@ -33,7 +29,3 @@ add wave -noupdate -format logic /tb_io_ctrl/LED_o
 add wave -noupdate -format logic /tb_io_ctrl/ss_sel_o 
 add wave -noupdate -format logic /tb_io_ctrl/ss_o     
 add wave -noupdate -format logic /tb_io_ctrl/pbsync_o
-add wave -noupdate -format logic /tb_io_ctrl/cntr0_i 
-add wave -noupdate -format logic /tb_io_ctrl/cntr1_i 
-add wave -noupdate -format logic /tb_io_ctrl/cntr2_i 
-add wave -noupdate -format logic /tb_io_ctrl/cntr3_i 

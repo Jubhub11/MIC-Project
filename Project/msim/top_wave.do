@@ -7,25 +7,27 @@
 #-                                                               -#
 #-         Date: 24 Jun 2025                                     -#
 #-                                                               -#
-#-  Design Unit: Counter Unit (ModelSim compile file)            -#
+#-  Design Unit: Counter Unit (ModelSim wave file)               -#
 #-                                                               -#
-#-     Filename: counter_compile.do                              -#
+#-     Filename: counter_wave.do                                 -#
 #-                                                               -#
 #-      Version: 1.0                                             -#
 #-                                                               -#
 #-  Description: The counter unit implements a 4 digit octal     -#
 #-               counter running at a frequency of 100Hz.        -#
 #-               It is a part of the counter project. This file  -#
-#-               compiles the necessary elements for ModelSim.   -#
+#-               adds the relevant waves in ModelSim.            -#
 #-----------------------------------------------------------------#
 
-vcom ../vhdl/counter_.vhd
-vcom ../vhdl/counter_rtl.vhd
-vcom ../vhdl/counter_rtl_cfg.vhd
-
-vcom ../vhdl/io_ctrl_.vhd
-vcom ../vhdl/io_ctrl_rtl.vhd
-
-vcom ../vhdl/cntr_top_.vhd
-vcom ../vhdl/cntr_top_str.vhd
-vcom ../tb/tb_cntr_top.vhd
+onerror {resume}
+add wave -noupdate -format logic /tb_cntr_top/clk_i    
+add wave -noupdate -format logic /tb_cntr_top/reset_i    
+add wave -noupdate -format logic /tb_cntr_top/sw_i      
+add wave -noupdate -format logic /tb_cntr_top/LED_o
+add wave -noupdate -format logic /tb_cntr_top/LED_i   
+add wave -noupdate -format logic /tb_cntr_top/ss_sel_o 
+add wave -noupdate -format logic /tb_cntr_top/ss_o     
+add wave -noupdate -format logic /tb_cntr_top/cntr0_o  
+add wave -noupdate -format logic /tb_cntr_top/cntr1_o
+add wave -noupdate -format logic /tb_cntr_top/cntr2_o
+add wave -noupdate -format logic /tb_cntr_top/cntr3_o      
