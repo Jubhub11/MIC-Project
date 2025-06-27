@@ -76,6 +76,10 @@ architecture Structural  of cntr_top is
 	signal ss : std_logic_vector (0 to 7);
 	signal pbsync : std_logic_vector (0 to 3);
 	signal BTNC : std_logic; -- Button for reset
+	signal cntrhold : std_logic; 
+	signal cntrclear : std_logic;
+	signal cntrup_i   : std_logic;
+	signal cntrdown_i : std_logic;
 begin
 	
 	----- MAIN COUNTER PROCESS -----
@@ -104,10 +108,10 @@ begin
 		port map (
 		clk_i		 => clk_i,
 	    reset_i		 => BTNC,
-	    cntrhold_i   => swsync(0),
-	    cntrclear_i  => swsync(1),
-	    cntrup_i     => swsync(2),
-	    cntrdown_i   => swsync(3),
+	    cntrhold_i   => cntrhold,
+	    cntrclear_i  => cntrclear,
+	    cntrup_i     => cntrup ,
+	    cntrdown_i   => cntrdown,
 	    cntr0_o      => cntr0,
 	    cntr1_o      => cntr1,
 	    cntr2_o      => cntr2,
@@ -127,5 +131,12 @@ begin
 	pbsync_o  <= pbsync;
 	swsync_o  <= swsync;
 
-	end Structural;
+--counter switch logic
+process(clk_i)
+begin
+	if clk_i'event and clk_i = '1' then
+	
+		
+		end if;
+	end if;
 			
