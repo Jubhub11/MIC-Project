@@ -106,6 +106,7 @@ begin
   ----- Test scenarios -----
   p_test : process
   begin
+    -- Initialize signals
     wait for 100 ms;
     reset_i <= '1';
     SW_i <= "0000000000000000";
@@ -119,13 +120,15 @@ begin
     cntr2_i <= "0000";  -- Initialize counter digit 3
     cntr3_i <= "0000";  -- Initialize counter digit 4
     wait for 1 sec;
+
     -- Release reset
     reset_i <= '0';
     SW_i <= "0000000000000001";  -- Activate switch 0
     cntr0_i <= "0001";
-        LED_i <= "0000011110000000";
+    LED_i <= "0000011110000000";
     wait for 1 sec;
 
+    -- Test switch synchronization
     SW_i <= "0000000000000010";  -- Activate switch 1
     cntr0_i <= "0010";
     wait for 1 sec;

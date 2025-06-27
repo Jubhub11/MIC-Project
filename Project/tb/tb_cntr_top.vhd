@@ -111,24 +111,24 @@ begin
     reset_i <= '0';
     
     -- Test counting up
-    sw_i(1) <= '1';  -- Simulate switch for counting up
+    sw_i(2) <= '1';  -- Simulate switch for counting up
     wait for 100 ms;  -- Allow time for counting
     
     -- Test counting down 
-    sw_i(1) <= '0';  -- Release counting up switch
-    sw_i(2) <= '1';  -- Simulate switch for counting down
+    sw_i(2) <= '0';  -- Release counting up switch
+    sw_i(3) <= '1';  -- Simulate switch for counting down
     wait for 100 ms;  -- Allow time for counting
     
     -- Test hold
-    sw_i(2) <= '0';  -- Release counting down switch
+    sw_i(3) <= '0';  -- Release counting down switch
     sw_i(0) <= '1';  -- Simulate switch for holding counter
     wait for 500 ms;  -- Counter should hold value
     
     -- Test clear
     sw_i(0) <= '0';  -- Release hold switch
-    sw_i(3) <= '1';  -- Simulate switch for clearing counter
+    sw_i(1) <= '1';  -- Simulate switch for clearing counter
     wait for 200 ms;  -- Allow time for clearing
-    sw_i(3) <= '0';  -- Release clear switch
+    sw_i(1) <= '0';  -- Release clear switch
     
     -- End simulation
     wait;
