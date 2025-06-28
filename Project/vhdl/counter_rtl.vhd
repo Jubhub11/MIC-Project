@@ -27,7 +27,7 @@ use work.counter_constants_pkg.all;
 architecture rtl of counter is
 	type std_logic_vector_array is array (natural range <>) of std_logic_vector(3 downto 0);	-- type declaration for counter array
 	signal s_cntr : std_logic_vector_array(0 to 3) := (others => (others => '0'));				-- all counters combined into array
-	signal s_100hzclk : std_logic;																-- scaled 100Hz clock signal
+	signal s_10hzclk : std_logic;																-- scaled 10hz clock signal
 	signal s_clkcount : integer := 0;															-- counter for scaling clock signal
 begin	--rtl
 
@@ -35,12 +35,12 @@ begin	--rtl
 	p_slowclk : process (clk_i, reset_i)
 	begin
 		if reset_i = '1' then
-			s_100hzclk <= '0';
+			s_10hzclk <= '0';
 			s_clkcount <= 0;
 		elsif (clk_i'event and clk_i = '1') then
 			if s_clkcount = (((c_clk/10)/2)-1) then				-- scale based on configured external clock. 10 -> Desired Clock speed
 				s_clkcount <= 0;
-				s_100hzclk <= not s_100hzclk;
+				s_10hzclk <= not s_10hzclk;
 			else
 				s_clkcount <= s_clkcount + 1;
 			end if;
@@ -49,12 +49,12 @@ begin	--rtl
 	end process p_slowclk;
 
 ----- MAIN COUNTER PROCESS -----
-	p_OctalCounter : process(s_100hzclk, reset_i)
+	p_decimalCounter : process(s_10hzclk, reset_i)
 	variable v_cntr : std_logic_vector_array(0 to 3);		-- variable to allow logic without delay
 	begin
 		if reset_i = '1' then
 			v_cntr := (others => (others => '0'));
-		elsif (s_100hzclk'event and s_100hzclk = '1') then
+		elsif (s_10hzclk'event and s_10hzclk = '1') then
 			
 			-- CLEAR
 			if cntrclear_i = '1' then
@@ -104,7 +104,7 @@ begin	--rtl
 		end if;
 		
 	s_cntr <= v_cntr;	-- assign variable to signal so it is retained after process
-	end process p_OctalCounter;
+	end process p_decimalCounter;
 	
 cntr0_o <= s_cntr(0);
 cntr1_o <= s_cntr(1);

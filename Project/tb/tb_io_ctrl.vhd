@@ -13,10 +13,10 @@
 --                                                               --
 --      Version: 1.1                                             --
 --                                                               --
---  Description: The tb_io_ctrl entity is the testbench for the
---               IO controller unit. It simulates the behavior of
---               the IO controller, providing inputs and checking
---               the outputs to ensure correct functionality.
+--  Description: The tb_io_ctrl entity is the testbench for the  --
+--               IO controller unit. It simulates the behavior of--
+--               the IO controller, providing inputs and checking--
+--               the outputs to ensure correct functionality.    --
 -------------------------------------------------------------------
 
 library IEEE;

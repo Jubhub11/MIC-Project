@@ -13,10 +13,10 @@
 --                                                               --
 --      Version: 1.1                                             --
 --                                                               --
---  Description: The cntr_top entity is the top-level design unit
---               for the counter project. It integrates the IO
---               controller and the counter unit, providing a
---               complete solution for the counter functionality.
+--  Description: The cntr_top entity is the top-level design unit--
+--               for the counter project. It integrates the IO   --
+--               controller and the counter unit, providing a    --
+--               complete solution for the counter functionality.--
 -------------------------------------------------------------------
 
 library IEEE;

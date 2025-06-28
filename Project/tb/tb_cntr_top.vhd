@@ -7,16 +7,16 @@
 --                                                               --
 --         Date: 24 Jun 2025                                     --
 --                                                               --
---  Design Unit: cntr_top (Testbench)                             --
+--  Design Unit: cntr_top (Testbench)                            --
 --                                                               --
---     Filename: tb_cntr_top.vhd                                  --
+--     Filename: tb_cntr_top.vhd                                 --
 --                                                               --
 --      Version: 1.1                                             --
 --                                                               --
---  Description: The tb_cntr_top entity is the testbench for the
---               cntr_top unit. It simulates the behavior of the
---               counter top-level design, providing inputs and
---               checking the outputs to ensure correct functionality.
+--  Description: The tb_cntr_top entity is the testbench for the --
+--               cntr_top unit. It simulates the behavior of the --
+--               counter top-level design, providing inputs and  --
+--               checking the outputs to ensure functionality.   --
 -------------------------------------------------------------------
 
 library IEEE;

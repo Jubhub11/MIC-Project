@@ -1,6 +1,6 @@
 --------------------------------------------------------------------
 --          Microelectronic Design | FH Technikum Wien            --
---                        IO PROJECT                         --
+--                        IO PROJECT                              --
 --------------------------------------------------------------------
 --       Author: Bauer Julian  (el23b071@technikum-wien.at)       --
 --               Gundacker Max (el23b074@technikum-wien.at)       --

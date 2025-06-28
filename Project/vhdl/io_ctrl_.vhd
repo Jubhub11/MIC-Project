@@ -1,6 +1,6 @@
 --------------------------------------------------------------------
 --          Microelectronic Design | FH Technikum Wien            --
---                        IO PROJECT                         --
+--                        IO PROJECT                              --
 --------------------------------------------------------------------
 --       Author: Bauer Julian  (el23b071@technikum-wien.at)       --
 --               Gundacker Max (el23b074@technikum-wien.at)       --
@@ -20,7 +20,7 @@
 --               display. It is a part of the counter project.    --
 --               This file contains the entity declaration of the --
 --               IO ctrl unit.                                    --
--------------------------------------------------------------------
+--------------------------------------------------------------------
 library IEEE;
 use IEEE.std_logic_1164.all;
 use work.counter_constants_pkg.all;

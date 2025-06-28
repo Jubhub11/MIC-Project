@@ -13,8 +13,8 @@
 --                                                               --
 --      Version: 1.0                                             --
 --                                                               --
---  Description: The counter unit implements a 4 digit octal     --
---               counter running at a frequency of 100Hz.        --
+--  Description: The counter unit implements a 4 digit decimal   --
+--               counter running at a frequency of 10hz.         --
 --               It is a part of the counter project. This file  --
 --               contains the entity declaration of the counter. --
 -------------------------------------------------------------------

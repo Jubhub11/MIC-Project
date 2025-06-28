@@ -9,13 +9,13 @@
 --                                                               --
 --  Design Unit: Counter Unit (Testbench)                        --
 --                                                               --
---     Filename: cntr_top_str.vhd                                  --
+--     Filename: cntr_top_str.vhd                                --
 --                                                               --
 --      Version: 1.1                                             --
 --                                                               --
---  Description: The cntr_top It integrates the IO
---               controller and the counter unit, providing a
---               complete solution for the counter functionality.
+--  Description: The cntr_top It integrates the IO               --
+--               controller and the counter unit, providing a    --
+--               complete solution for the counter functionality.--
 -------------------------------------------------------------------
 
 library IEEE;
