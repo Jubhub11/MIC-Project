@@ -26,8 +26,3 @@ add wave -noupdate -format logic /tb_cntr_top/sw_i
 add wave -noupdate -format logic /tb_cntr_top/LED_o  
 add wave -noupdate -format logic /tb_cntr_top/ss_sel_o 
 add wave -noupdate -format logic /tb_cntr_top/ss_o     
-add wave -noupdate -format logic /tb_cntr_top/cntr0_o  
-add wave -noupdate -format logic /tb_cntr_top/cntr1_o
-add wave -noupdate -format logic /tb_cntr_top/cntr2_o
-add wave -noupdate -format logic /tb_cntr_top/cntr3_o      
-add wave -noupdate -format logic /tb_cntr_top/swsync_o
