@@ -19,9 +19,10 @@
 #-               compiles the necessary elements for ModelSim.   -#
 #-----------------------------------------------------------------#
 
+vcom ../vhdl/counter_constants_pkg.vhd
+
 vcom ../vhdl/counter_.vhd
 vcom ../vhdl/counter_rtl.vhd
-vcom ../vhdl/counter_rtl_cfg.vhd
 
 vcom ../vhdl/io_ctrl_.vhd
 vcom ../vhdl/io_ctrl_rtl.vhd

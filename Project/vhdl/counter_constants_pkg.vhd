@@ -7,19 +7,21 @@
 --                                                               --
 --         Date: 24 Jun 2025                                     --
 --                                                               --
---  Design Unit: Counter Unit (Config)                           --
+--  Design Unit: counter_constants_pkg.vhd (Package)             --
 --                                                               --
---     Filename: counter_rtl_cfg.vhd                             --
+--     Filename: tb_cntr_top.vhd                                 --
 --                                                               --
 --      Version: 1.0                                             --
 --                                                               --
---  Description: The counter unit implements a 4 digit octal     --
---               counter running at a frequency of 100Hz.        --
---               It is a part of the counter project. This file  --
---               contains the rtl configuration of the counter.  --
+--  Description: This is a package containing constants used     --
+--				 across the counter project.                     --
 -------------------------------------------------------------------
 
-configuration counter_rtl_cfg of counter is
-	for rtl
-	end for;
-end counter_rtl_cfg;
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+package counter_constants_pkg is
+    constant c_clk : integer := 50_000;			-- low speed clock for simulation
+    --constant c_clk : integer := 100_000_000;	-- true speed
+	constant c_Tclk : time    := 1 sec / c_clk; -- clock period
+end package counter_constants_pkg;

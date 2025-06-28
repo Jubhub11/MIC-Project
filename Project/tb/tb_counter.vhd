@@ -21,6 +21,7 @@
 
 library IEEE;
 use IEEE.std_logic_1164.all;
+use work.counter_constants_pkg.all;
 
 entity tb_counter is
 end tb_counter;
@@ -51,7 +52,6 @@ architecture sim of tb_counter is
   signal cntr1_o		: std_logic_vector (0 to 3);
   signal cntr2_o		: std_logic_vector (0 to 3);
   signal cntr3_o		: std_logic_vector (0 to 3); 
-  constant c_Tclk : time := 1 ms; -- external clock period for simulation
 
 
 begin
@@ -127,11 +127,3 @@ begin
   end process;
 
 end sim;
-
-configuration tb_counter_sim of tb_counter is
-  for sim
-    for i_counter : counter
-      use configuration work.counter_rtl_cfg;
-    end for;
-  end for;
-end tb_counter_sim;

@@ -23,9 +23,9 @@
 -------------------------------------------------------------------
 library IEEE;
 use IEEE.std_logic_1164.all;
+use work.counter_constants_pkg.all;
 
 entity io_ctrl is 
- generic (c_clk : natural := 1000);	--1.000.000/1.000 = 1kHz clock
   port (
     	--general inputs
         clk_i  : in   std_logic;    --system clock 100MHz

@@ -22,6 +22,7 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.std_logic_unsigned.all;	--contains + operator
+use work.counter_constants_pkg.all;
 
 architecture rtl of counter is
 	type std_logic_vector_array is array (natural range <>) of std_logic_vector(3 downto 0);	-- type declaration for counter array
@@ -37,7 +38,7 @@ begin	--rtl
 			s_100hzclk <= '0';
 			s_clkcount <= 0;
 		elsif (clk_i'event and clk_i = '1') then
-			if s_clkcount = ((c_clk/20)-1) then				-- scale based on configured external clock
+			if s_clkcount = (((c_clk/10)/2)-1) then				-- scale based on configured external clock. 10 -> Desired Clock speed
 				s_clkcount <= 0;
 				s_100hzclk <= not s_100hzclk;
 			else

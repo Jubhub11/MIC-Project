@@ -25,6 +25,7 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.std_logic_unsigned.all;	--contains + operator
+use work.counter_constants_pkg.all;
 
 architecture rtl of io_ctrl is
 	signal s_1khzclk : std_logic;									-- scaled 1kHz clock signal
@@ -70,7 +71,7 @@ begin	--rtl
 			s_1khzclk <= '0';
 			s_clkcount <= 0;
 		elsif (clk_i'event and clk_i = '1') then
-			if s_clkcount = ((c_clk/2)-1) then				-- scale based on configured external clock
+			if s_clkcount = (((c_clk/1000)/2)-1) then				-- scale based on configured external clock -> 1000 = Desired clock speed
 				s_clkcount <= 0;
 				s_1khzclk <= not s_1khzclk;
 			else

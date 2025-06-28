@@ -20,11 +20,11 @@
 
 library IEEE;
 use IEEE.std_logic_1164.all;
+use work.counter_constants_pkg.all;
 
 architecture Structural  of cntr_top is
 
 	component io_ctrl is
-		generic (c_clk : natural := 1000);	--1.000.000/1.000 = 1kHz clock
 		port (
 			clk_i      : in   std_logic;    --system clock 100MHz
 			reset_i    : in   std_logic;   --global asyncronreset BTNC
@@ -47,7 +47,6 @@ architecture Structural  of cntr_top is
 	end component;
 
 	component counter is
-		generic (c_clk : natural := 1000);
 		port (
 			clk_i		 : in  std_logic;					-- system clock 100MHz
 			reset_i		 : in  std_logic;					-- reset

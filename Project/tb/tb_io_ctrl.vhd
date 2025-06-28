@@ -21,13 +21,13 @@
 
 library IEEE;
 use IEEE.std_logic_1164.all;
+use work.counter_constants_pkg.all;
 
 entity tb_io_ctrl is
 end tb_io_ctrl;
 
 architecture sim of tb_io_ctrl is
   component io_ctrl
-    generic (c_clk : natural := 50000);  -- 50000 for 1kHz clock in simulation
     port (
       clk_i        : in   std_logic;  -- system clock
       reset_i      : in   std_logic;  -- global asynchronous reset
@@ -51,7 +51,6 @@ architecture sim of tb_io_ctrl is
   ----- Declare the signals used stimulating the design's inputs/outputs -----
   signal clk_i        : std_logic := '0';
   signal reset_i      : std_logic := '1';  -- Reset signal
-  constant c_Tclk     : time := 1 ms; -- external clock period for simulation
   -- constant for the clock period, can be adjusted for simulation speed
   signal BTNL_i       : std_logic;  -- Button Left
   signal BTNR_i       : std_logic;  -- Button Right
@@ -68,7 +67,6 @@ architecture sim of tb_io_ctrl is
   signal cntr1_i     : std_logic_vector(0 to 3);  -- Counter Digit 2 input
   signal cntr2_i     : std_logic_vector(0 to 3);  -- Counter Digit 3 input
   signal cntr3_i     : std_logic_vector(0 to 3);  -- Counter Digit 4 input
-  constant c_clk      : natural := 50000;  -- 50000 for 1kHz clock in simulation
 begin
 
   ----- Instantiate the counter design for testing -----

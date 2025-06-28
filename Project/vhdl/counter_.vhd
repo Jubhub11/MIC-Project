@@ -21,9 +21,9 @@
 
 library IEEE;
 use IEEE.std_logic_1164.all;
+use work.counter_constants_pkg.all;
 
 entity counter is
-  generic (c_clk : natural := 1000);				-- constant to easily adjust external clock. Useful for simulation
   port (clk_i		   : in  std_logic;					-- system clock 100MHz
         reset_i		 : in  std_logic;					-- reset
         cntrhold_i	: in  std_logic;					-- when 1 -> counter holds value

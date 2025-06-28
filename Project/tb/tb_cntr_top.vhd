@@ -21,13 +21,13 @@
 
 library IEEE;
 use IEEE.std_logic_1164.all;
+use work.counter_constants_pkg.all;
 
 entity tb_cntr_top is
 end tb_cntr_top;
 
 architecture sim of tb_cntr_top is
   component cntr_top
-    generic (c_clk : natural := 50000);  -- 50000 for 1kHz clock in simulation
     port (
     clk_i        : in  std_logic;                  -- system clock 100MHz
     reset_i      : in  std_logic;                  -- reset
@@ -64,7 +64,6 @@ architecture sim of tb_cntr_top is
     signal ss_sel_o    : std_logic_vector (0 to 3);  -- 7-Segment Selects output
     signal ss_o        : std_logic_vector (0 to 7);   -- 7-Segment LEDs output
     signal sw_i        : std_logic_vector(0 to 15);  -- Switches (16)
-    constant c_Tclk : time := 1 us; -- external clock period for simulation
 begin
 
   ----- Instantiate the counter design for testing -----
@@ -122,31 +121,31 @@ begin
     sw_i(0) <= '1';  	-- Enable counter
     sw_i(1) <= '0';  	-- Disable switch for counting up
 	sw_i(2) <= '1';  	-- Enable switch for counting down
-    wait for 100 ms;  	-- Allow time for counting
+    wait for 1000 ms;  	-- Allow time for counting
     
     -- Test counting up
 	sw_i(2) <= '0';  	-- Disable switch for counting down
     sw_i(1) <= '1';  	-- Enable switch for counting up
-    wait for 100 ms;  	-- Counter should go up
+    wait for 1000 ms;  	-- Counter should go up
 	sw_i(2) <= '1';		-- Enable switch for counting down, should be overwritten
-	wait for 100 ms;	-- Counter should go up
+	wait for 2000 ms;	-- Counter should go up
     
 	-- Test other variations -> expecting hold
 	sw_i(1) <= '0';  	-- Disable switch for counting up
 	sw_i(2) <= '0';  	-- Disable switch for counting down
-    wait for 100 ms;  	-- Counter should hold
+    wait for 200 ms;  	-- Counter should hold
 	sw_i(0) <= '0';  	-- Disable counter
 	sw_i(1) <= '0';  	-- Disable switch for counting up
 	sw_i(2) <= '1';  	-- Enable switch for counting down
-    wait for 100 ms;  	-- Counter should hold
+    wait for 200 ms;  	-- Counter should hold
 	sw_i(0) <= '0';  	-- Disable counter
 	sw_i(1) <= '1';  	-- Enable switch for counting up
 	sw_i(2) <= '0';  	-- Disable switch for counting down
-    wait for 100 ms;  	-- Counter should hold
+    wait for 200 ms;  	-- Counter should hold
 	
     -- Test clear
     sw_i(3) <= '1';  	-- Enable switch for clearing counter
-    wait for 200 ms;  	-- Allow time for clearing
+    wait for 100 ms;  	-- Allow time for clearing
     sw_i(3) <= '0';  	-- Release clear switch
     
     -- End simulation
