@@ -30,4 +30,4 @@ add wave -noupdate -format logic /tb_cntr_top/cntr0_o
 add wave -noupdate -format logic /tb_cntr_top/cntr1_o
 add wave -noupdate -format logic /tb_cntr_top/cntr2_o
 add wave -noupdate -format logic /tb_cntr_top/cntr3_o      
-add wave -noupdate -format logic /tb_cntr_top/sw_sync_o
+add wave -noupdate -format logic /tb_cntr_top/swsync_o

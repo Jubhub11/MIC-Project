@@ -31,39 +31,21 @@ architecture sim of tb_cntr_top is
     port (
     clk_i        : in  std_logic;                  -- system clock 100MHz
     reset_i      : in  std_logic;                  -- reset
-    cntrhold_i   : in  std_logic;                  -- when '1' -> counter holds value
-    cntrclear_i  : in  std_logic;                  -- when '1' -> counter set to 0000
-    cntrup_i     : in  std_logic;                  -- when '1' -> counts up
-    cntrdown_i   : in  std_logic;                  -- when '1' -> counts down
-    cntr0_o      : out std_logic_vector (0 to 3);  -- Digit 0
-    cntr1_o      : out std_logic_vector (0 to 3);  -- Digit 1
-    cntr2_o      : out std_logic_vector (0 to 3);  -- Digit 2
-    cntr3_o      : out std_logic_vector (0 to 3);   -- Digit 3
-    pbsync_o    : out std_logic_vector (0 to 3);   -- Button synchronization output
-    swsync_o    : out std_logic_vector (0 to 15); -- Switch synchronization output
     LED_o       : out std_logic_vector (0 to 15); -- LEDs output
     ss_sel_o    : out std_logic_vector (0 to 3);  -- 7-Segment Selects output
     ss_o        : out std_logic_vector (0 to 7);   -- 7-Segment LEDs output
-    sw_i         : in   std_logic_vector(0 to 15)  -- Switches (16)
+    sw_i         : in   std_logic_vector(0 to 15);  -- Switches (16)
+    pb_i         : in   std_logic_vector(0 to 3)   -- Push Buttons (4)
     );
      end component;
   ----- Declare the signals used stimulating the design's inputs/outputs -----
     signal clk_i       : std_logic;                  -- system clock 100MHz
     signal reset_i     : std_logic;                  -- reset --BTNC
-    signal cntrhold_i  : std_logic;                  -- when '1' -> counter holds value
-    signal cntrclear_i : std_logic;                  -- when '1' -> counter set to 0000
-    signal cntrup_i    : std_logic;                  -- when '1' -> counts up
-    signal cntrdown_i  : std_logic;                  -- when '1' -> counts down
-    signal cntr0_o     : std_logic_vector (0 to 3);  -- Digit 0
-    signal cntr1_o     : std_logic_vector (0 to 3);  -- Digit 1
-    signal cntr2_o     : std_logic_vector (0 to 3);  -- Digit 2
-    signal cntr3_o     : std_logic_vector (0 to 3);   -- Digit 3
-    signal pbsync_o    : std_logic_vector (0 to 3);   -- Button synchronization output
-    signal swsync_o    : std_logic_vector (0 to 15); -- Switch synchronization output
     signal LED_o       : std_logic_vector (0 to 15); -- LEDs output
     signal ss_sel_o    : std_logic_vector (0 to 3);  -- 7-Segment Selects output
     signal ss_o        : std_logic_vector (0 to 7);   -- 7-Segment LEDs output
     signal sw_i        : std_logic_vector(0 to 15);  -- Switches (16)
+    signal pb_i        : std_logic_vector(0 to 3);   -- Push Buttons (4)
 begin
 
   ----- Instantiate the counter design for testing -----
@@ -71,20 +53,11 @@ begin
     port map (
       clk_i        => clk_i,
       reset_i      => reset_i,
-      cntrhold_i   => cntrhold_i,
-      cntrclear_i  => cntrclear_i,
-      cntrup_i     => cntrup_i,
-      cntrdown_i   => cntrdown_i,
-      cntr0_o      => cntr0_o,
-      cntr1_o      => cntr1_o,
-      cntr2_o      => cntr2_o,
-      cntr3_o      => cntr3_o,
-      pbsync_o     => pbsync_o,
-      swsync_o     => swsync_o,
       LED_o        => LED_o,
       ss_sel_o     => ss_sel_o,
       ss_o         => ss_o,
-      sw_i         => sw_i
+      sw_i         => sw_i,
+      pb_i         => pb_i
     );
 
   ----- clock signal generator -----

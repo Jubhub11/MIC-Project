@@ -27,19 +27,10 @@ entity cntr_top is
   port (
     clk_i        : in  std_logic;                  -- system clock 100MHz
     reset_i      : in  std_logic;                  -- reset
-    cntrhold_i   : in  std_logic;                  -- when '1' -> counter holds value
-    cntrclear_i  : in  std_logic;                  -- when '1' -> counter set to 0000
-    cntrup_i     : in  std_logic;                  -- when '1' -> counts up
-    cntrdown_i   : in  std_logic;                  -- when '1' -> counts down
-    cntr0_o      : out std_logic_vector (0 to 3);  -- Digit 0
-    cntr1_o      : out std_logic_vector (0 to 3);  -- Digit 1
-    cntr2_o      : out std_logic_vector (0 to 3);  -- Digit 2
-    cntr3_o      : out std_logic_vector (0 to 3);   -- Digit 3
-    pbsync_o    : out std_logic_vector (0 to 3);   -- Button synchronization output
-    swsync_o    : out std_logic_vector (0 to 15); -- Switch synchronization output
-    LED_o       : out std_logic_vector (0 to 15); -- LEDs output
-    ss_sel_o    : out std_logic_vector (0 to 3);  -- 7-Segment Selects output
-    ss_o        : out std_logic_vector (0 to 7);   -- 7-Segment LEDs output
-    sw_i         : in   std_logic_vector(0 to 15)  -- Switches (16)  
+    LED_o        : out std_logic_vector (0 to 15); -- LEDs output
+    ss_sel_o     : out std_logic_vector (0 to 3);  -- 7-Segment Selects output
+    ss_o         : out std_logic_vector (0 to 7);   -- 7-Segment LEDs output
+    sw_i         : in   std_logic_vector(0 to 15);  -- Switches (16)  
+    pb_i         : in   std_logic_vector(0 to 3)   -- Push Buttons (4)
   );
 end cntr_top;

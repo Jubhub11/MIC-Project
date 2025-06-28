@@ -63,17 +63,13 @@ architecture Structural  of cntr_top is
 
 	signal s_1khzclk : std_logic;									-- scaled 1kHz clock signal
 	signal s_clkcount : integer := 0;								-- counter for scaling clock signal
-	signal swsync : std_logic_vector (0 to 15);
-	signal cntr0  :  std_logic_vector (0 to 3);
-	signal cntr1  :  std_logic_vector (0 to 3);
-	signal cntr2  :  std_logic_vector (0 to 3);
-	signal cntr3  :  std_logic_vector (0 to 3);
-	signal leds_i  :  std_logic_vector (0 to 15);
-	signal leds_o  :  std_logic_vector (0 to 15);
-	signal sw  :  std_logic_vector (0 to 15);
-	signal ss_sel : std_logic_vector (0 to 3);
-	signal ss : std_logic_vector (0 to 7);
-	signal pbsync : std_logic_vector (0 to 3);
+	signal s_swsync : std_logic_vector (0 to 15);
+	signal s_cntr0  :  std_logic_vector (0 to 3);
+	signal s_cntr1  :  std_logic_vector (0 to 3);
+	signal s_cntr2  :  std_logic_vector (0 to 3);
+	signal s_cntr3  :  std_logic_vector (0 to 3);
+	signal s_leds_i  :  std_logic_vector (0 to 15);
+	signal s_pbsync_o : std_logic_vector (0 to 3);
 	signal BTNC : std_logic; -- Button for reset
 	signal cntrhold : std_logic; 
 	signal cntrclear : std_logic;
@@ -86,21 +82,21 @@ begin
 	port map (
 		clk_i      => clk_i,
 	    reset_i    => BTNC,
-	    BTNL_i     => '0',  -- Not used in this design
-		BTNR_i     => '0',  -- Not used in this design
-		BTNU_i     => '0',  -- Not used in this design
-		BTND_i     => '0',  -- Not used in this design
+	    BTNL_i     => pb_i(0),  -- Not used in this design
+		BTNR_i     => pb_i(1),  -- Not used in this design
+		BTNU_i     => pb_i(2),  -- Not used in this design
+		BTND_i     => pb_i(3),  -- Not used in this design
 		SW_i       => sw_i,	
 		LED_o      => LED_o, 
 		ss_sel_o   => ss_sel_o,
 	    ss_o       => ss_o,
-	    pbsync_o   => pbsync_o,
-	    swsync_o   => swsync,
-	    LED_i	   => leds_i,
-		cntr0_i    => cntr0,
-	    cntr1_i    => cntr1,
-	    cntr2_i    => cntr2,
-	    cntr3_i    => cntr3 	
+	    pbsync_o   => s_pbsync_o,
+	    swsync_o   => s_swsync,
+	    LED_i	   => s_leds_i,
+		cntr0_i    => s_cntr0,
+	    cntr1_i    => s_cntr1,
+	    cntr2_i    => s_cntr2,
+	    cntr3_i    => s_cntr3 	
 	);
 	
 	i_counter: counter 
@@ -111,24 +107,18 @@ begin
 	    cntrclear_i  => cntrclear,
 	    cntrup_i     => cntrup ,
 	    cntrdown_i   => cntrdown,
-	    cntr0_o      => cntr0,
-	    cntr1_o      => cntr1,
-	    cntr2_o      => cntr2,
-	    cntr3_o      => cntr3
+	    cntr0_o      => s_cntr0,
+	    cntr1_o      => s_cntr1,
+	    cntr2_o      => s_cntr2,
+	    cntr3_o      => s_cntr3
 	);
 
 	BTNC      <= reset_i;
-	leds_i(0) <= swsync(0); 
-	leds_i(1) <= swsync(1); 
-	leds_i(2) <= swsync(2);  
-	leds_i(3) <= swsync(3);
-	leds_i(4 to 15)  <= (others =>'0'); 
-	cntr0_o   <= cntr0;
-	cntr1_o   <= cntr1;
-	cntr2_o   <= cntr2;
-	cntr3_o   <= cntr3;
-	pbsync_o  <= pbsync;
-	swsync_o  <= swsync;
+	s_leds_i(0) <= s_swsync(0); 
+	s_leds_i(1) <= s_swsync(1); 
+	s_leds_i(2) <= s_swsync(2);  
+	s_leds_i(3) <= s_swsync(3);
+	s_leds_i(4 to 15)  <= (others =>'0'); 
 
 	--counter switch logic
 	sw2cntr : process(clk_i, BTNC)
@@ -145,15 +135,15 @@ begin
 			cntrup 		<= '0';
 			cntrdown 	<= '0';
 			-- clear
-			if swsync(3) = '1' then
+			if s_swsync(3) = '1' then
 				cntrclear <= '1';
 			-- counter on
-			elsif swsync(0) = '1' then
+			elsif s_swsync(0) = '1' then
 				-- count up
-				if swsync(1) = '1' then
+				if s_swsync(1) = '1' then
 					cntrup <= '1';
 				-- count down
-				elsif swsync(2) = '1'then
+				elsif s_swsync(2) = '1'then
 					cntrdown <= '1';
 				else
 					cntrhold <= '1';	-- hold is fallback
