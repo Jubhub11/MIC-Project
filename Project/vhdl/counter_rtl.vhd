@@ -100,7 +100,7 @@ begin	--rtl
 				
 				-- DEFAULT
 				else
-					v_cntr := s_cntr;	-- keep value as fallback
+					v_cntr := (others => (others => '0'));
 				end if;
 			end if;
 		end if;

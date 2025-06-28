@@ -21,7 +21,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
 package counter_constants_pkg is
-    constant c_clk : integer := 50_000;			-- low speed clock for simulation
-    --constant c_clk : integer := 100_000_000;	-- true speed
+    --constant c_clk : integer := 50_000;			-- low speed clock for simulation
+    constant c_clk : integer := 100_000_000;	-- true speed
 	constant c_Tclk : time    := 1 sec / c_clk; -- clock period
 end package counter_constants_pkg;

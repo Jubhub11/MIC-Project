@@ -1,0 +1,206 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2024.2 (win64) Build 5239630 Fri Nov 08 22:35:27 MST 2024
+| Date         : Sat Jun 28 16:58:33 2025
+| Host         : DESKTOP-EHP1IHP running 64-bit major release  (build 9200)
+| Command      : report_methodology -file cntr_top_methodology_drc_routed.rpt -pb cntr_top_methodology_drc_routed.pb -rpx cntr_top_methodology_drc_routed.rpx
+| Design       : cntr_top
+| Device       : xc7a35tcpg236-1
+| Speed File   : -1
+| Design State : Fully Routed
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Report Methodology
+
+Table of Contents
+-----------------
+1. REPORT SUMMARY
+2. REPORT DETAILS
+
+1. REPORT SUMMARY
+-----------------
+            Netlist: netlist
+          Floorplan: design_1
+      Design limits: <entire design considered>
+             Max checks: <unlimited>
+             Checks found: 34
++-----------+------------------+-------------------------------+--------+
+| Rule      | Severity         | Description                   | Checks |
++-----------+------------------+-------------------------------+--------+
+| TIMING-17 | Critical Warning | Non-clocked sequential cell   | 17     |
+| TIMING-18 | Warning          | Missing input or output delay | 17     |
++-----------+------------------+-------------------------------+--------+
+
+2. REPORT DETAILS
+-----------------
+TIMING-17#1 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_io_ctrl/LED_o_reg[0]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#2 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_io_ctrl/LED_o_reg[1]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#3 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_io_ctrl/LED_o_reg[2]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#4 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_io_ctrl/LED_o_reg[3]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#5 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_io_ctrl/s_ss_reg[0]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#6 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_io_ctrl/s_ss_reg[1]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#7 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_io_ctrl/s_ss_reg[2]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#8 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_io_ctrl/s_ss_reg[3]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#9 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_io_ctrl/s_ss_reg[4]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#10 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_io_ctrl/s_ss_reg[5]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#11 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_io_ctrl/s_ss_reg[6]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#12 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_io_ctrl/s_ss_sel_reg[0]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#13 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_io_ctrl/s_ss_sel_reg[1]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#14 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_io_ctrl/s_ss_sel_reg[2]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#15 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_io_ctrl/s_ss_sel_reg[3]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#16 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_io_ctrl/v_digit_reg[0]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#17 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_io_ctrl/v_digit_reg[1]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-18#1 Warning
+Missing input or output delay  
+An input delay is missing on reset_i relative to the rising and/or falling clock edge(s) of clk_i.
+Related violations: <none>
+
+TIMING-18#2 Warning
+Missing input or output delay  
+An input delay is missing on sw_i[0] relative to the rising and/or falling clock edge(s) of clk_i.
+Related violations: <none>
+
+TIMING-18#3 Warning
+Missing input or output delay  
+An input delay is missing on sw_i[10] relative to the rising and/or falling clock edge(s) of clk_i.
+Related violations: <none>
+
+TIMING-18#4 Warning
+Missing input or output delay  
+An input delay is missing on sw_i[11] relative to the rising and/or falling clock edge(s) of clk_i.
+Related violations: <none>
+
+TIMING-18#5 Warning
+Missing input or output delay  
+An input delay is missing on sw_i[12] relative to the rising and/or falling clock edge(s) of clk_i.
+Related violations: <none>
+
+TIMING-18#6 Warning
+Missing input or output delay  
+An input delay is missing on sw_i[13] relative to the rising and/or falling clock edge(s) of clk_i.
+Related violations: <none>
+
+TIMING-18#7 Warning
+Missing input or output delay  
+An input delay is missing on sw_i[14] relative to the rising and/or falling clock edge(s) of clk_i.
+Related violations: <none>
+
+TIMING-18#8 Warning
+Missing input or output delay  
+An input delay is missing on sw_i[15] relative to the rising and/or falling clock edge(s) of clk_i.
+Related violations: <none>
+
+TIMING-18#9 Warning
+Missing input or output delay  
+An input delay is missing on sw_i[1] relative to the rising and/or falling clock edge(s) of clk_i.
+Related violations: <none>
+
+TIMING-18#10 Warning
+Missing input or output delay  
+An input delay is missing on sw_i[2] relative to the rising and/or falling clock edge(s) of clk_i.
+Related violations: <none>
+
+TIMING-18#11 Warning
+Missing input or output delay  
+An input delay is missing on sw_i[3] relative to the rising and/or falling clock edge(s) of clk_i.
+Related violations: <none>
+
+TIMING-18#12 Warning
+Missing input or output delay  
+An input delay is missing on sw_i[4] relative to the rising and/or falling clock edge(s) of clk_i.
+Related violations: <none>
+
+TIMING-18#13 Warning
+Missing input or output delay  
+An input delay is missing on sw_i[5] relative to the rising and/or falling clock edge(s) of clk_i.
+Related violations: <none>
+
+TIMING-18#14 Warning
+Missing input or output delay  
+An input delay is missing on sw_i[6] relative to the rising and/or falling clock edge(s) of clk_i.
+Related violations: <none>
+
+TIMING-18#15 Warning
+Missing input or output delay  
+An input delay is missing on sw_i[7] relative to the rising and/or falling clock edge(s) of clk_i.
+Related violations: <none>
+
+TIMING-18#16 Warning
+Missing input or output delay  
+An input delay is missing on sw_i[8] relative to the rising and/or falling clock edge(s) of clk_i.
+Related violations: <none>
+
+TIMING-18#17 Warning
+Missing input or output delay  
+An input delay is missing on sw_i[9] relative to the rising and/or falling clock edge(s) of clk_i.
+Related violations: <none>
+
+
