@@ -71,10 +71,11 @@ begin	--rtl
 			s_1khzclk <= '0';
 			s_clkcount <= 0;
 		elsif (clk_i'event and clk_i = '1') then
-			if s_clkcount = (((c_clk/1000)/2)-1) then				-- scale based on configured external clock -> 1000 = Desired clock speed
+			if s_clkcount = ((c_clk/1000)-1) then				-- scale based on configured external clock -> 1000 = Desired clock speed
 				s_clkcount <= 0;
-				s_1khzclk <= not s_1khzclk;
+				s_1khzclk <= '1';
 			else
+				s_1khzclk <= '0';
 				s_clkcount <= s_clkcount + 1;
 			end if;
 		else
@@ -82,35 +83,37 @@ begin	--rtl
 	end process p_slowclk;
 
 ----- SW & pb debouncing -----
-    p_debounce : process(s_1khzclk, reset_i)
+    p_debounce : process(clk_i, reset_i)
         begin
             if reset_i = '1' then   
                 swsync <= (others => '0');
                 pbsync <= (others => '0');
                 switch_sr <= (others => (others => '0'));
                 button_sr <= (others => (others => '0')); 
-            elsif (s_1khzclk'event and s_1khzclk = '1') then
-                for i in SW_i'range loop
-                    switch_sr(i) <= switch_sr(i)(1 downto 0) & SW_i(i);
-                    if switch_sr(i) = "111" then
-                        swsync(i) <= '1';
-                    elsif switch_sr(i) = "000" then
-                        swsync(i) <= '0';
-                    end if;
-                end loop;
-                
-                -- Buttons: 0=BTNL, 1=BTNR, 2=BTNU, 3=BTND
-                button_sr(0) <= button_sr(0)(1 downto 0) & BTNL_i;
-                button_sr(1) <= button_sr(1)(1 downto 0) & BTNR_i;
-                button_sr(2) <= button_sr(2)(1 downto 0) & BTNU_i;
-                button_sr(3) <= button_sr(3)(1 downto 0) & BTND_i;
-                for j in 0 to 3 loop
-                    if button_sr(j) = "111" then
-                        pbsync(j) <= '1';
-                    elsif button_sr(j) = "000" then
-                        pbsync(j) <= '0';
-                    end if;
-                end loop;
+            elsif (clk_i'event and clk_i = '1') then
+				if s_1khzclk = '1' then		--1khz enable signal
+					for i in SW_i'range loop
+						switch_sr(i) <= switch_sr(i)(1 downto 0) & SW_i(i);
+						if switch_sr(i) = "111" then
+							swsync(i) <= '1';
+						elsif switch_sr(i) = "000" then
+							swsync(i) <= '0';
+						end if;
+					end loop;
+					
+					-- Buttons: 0=BTNL, 1=BTNR, 2=BTNU, 3=BTND
+					button_sr(0) <= button_sr(0)(1 downto 0) & BTNL_i;
+					button_sr(1) <= button_sr(1)(1 downto 0) & BTNR_i;
+					button_sr(2) <= button_sr(2)(1 downto 0) & BTNU_i;
+					button_sr(3) <= button_sr(3)(1 downto 0) & BTND_i;
+					for j in 0 to 3 loop
+						if button_sr(j) = "111" then
+							pbsync(j) <= '1';
+						elsif button_sr(j) = "000" then
+							pbsync(j) <= '0';
+						end if;
+					end loop;
+				end if;
             end if;
         swsync_o <= swsync;  -- Output the debounced switch states
         pbsync_o <= pbsync;  -- Output the debounced button states
