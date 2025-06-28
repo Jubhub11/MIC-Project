@@ -30,7 +30,7 @@ architecture rtl of counter is
 	signal s_clkcount : integer := 0;															-- counter for scaling clock signal
 begin	--rtl
 
------ SCALE CLOCK TO 100Hz -----
+----- SCALE CLOCK TO 10Hz -----
 	p_slowclk : process (clk_i, reset_i)
 	begin
 		if reset_i = '1' then

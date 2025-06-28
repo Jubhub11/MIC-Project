@@ -78,8 +78,8 @@ architecture Structural  of cntr_top is
 	signal BTNC : std_logic; -- Button for reset
 	signal cntrhold : std_logic; 
 	signal cntrclear : std_logic;
-	signal cntrup_i   : std_logic;
-	signal cntrdown_i : std_logic;
+	signal cntrup   : std_logic;
+	signal cntrdown : std_logic;
 begin
 	
 	----- MAIN COUNTER PROCESS -----
@@ -131,12 +131,38 @@ begin
 	pbsync_o  <= pbsync;
 	swsync_o  <= swsync;
 
---counter switch logic
-process(clk_i)
-begin
-	if clk_i'event and clk_i = '1' then
-	
-		
+	--counter switch logic
+	sw2cntr : process(clk_i, BTNC)
+	begin
+		if BTNC = '1' then	-- reset
+			cntrclear 	<= '0';
+			cntrhold 	<= '0';
+			cntrup 		<= '0';
+			cntrdown 	<= '0';
+		elsif clk_i'event and clk_i = '1' then
+			-- default
+			cntrclear 	<= '0';
+			cntrhold 	<= '0';
+			cntrup 		<= '0';
+			cntrdown 	<= '0';
+			-- clear
+			if swsync(3) = '1' then
+				cntrclear <= '1';
+			-- counter on
+			elsif swsync(0) = '1' then
+				-- count up
+				if swsync(1) = '1' then
+					cntrup <= '1';
+				-- count down
+				elsif swsync(2) = '1'then
+					cntrdown <= '1';
+				else
+					cntrhold <= '1';	-- hold is fallback
+				end if;
+			else
+				cntrhold <= '1';	-- hold is fallback
+			end if;
 		end if;
-	end if;
-			
+	end process sw2cntr;
+	
+end Structural;
