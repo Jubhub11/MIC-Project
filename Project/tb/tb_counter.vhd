@@ -94,14 +94,14 @@ begin
     cntrclear_i <= '0';
     cntrup_i <= '1';
     cntrdown_i <= '0';
-    wait for 1 sec;
+    wait for 2 sec;
 	-- counting down
     reset_i <= '0';
     cntrhold_i <= '0';
     cntrclear_i <= '0';
     cntrup_i <= '0';
     cntrdown_i <= '1';
-    wait for 2 sec;
+    wait for 4 sec;
 	-- hold counter
     reset_i <= '0';
     cntrhold_i <= '1';

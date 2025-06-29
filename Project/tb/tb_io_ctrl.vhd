@@ -41,11 +41,11 @@ architecture sim of tb_io_ctrl is
       LED_o        : out  std_logic_vector(0 to 15);  -- LEDs output
       ss_sel_o     : out  std_logic_vector(0 to 3);   -- 7-Segment Selects output
       ss_o         : out  std_logic_vector(0 to 7);   -- 7-Segment LEDs output
-      pbsync_o    : out  std_logic_vector (0 to 3);                   -- Button synchronization output
-      cntr0_i     : in   std_logic_vector(0 to 3);   -- Counter Digit 1 input
-      cntr1_i     : in   std_logic_vector(0 to 3);   -- Counter Digit 2 input
-      cntr2_i     : in   std_logic_vector(0 to 3);   -- Counter Digit 3 input
-      cntr3_i     : in   std_logic_vector(0 to 3)    -- Counter Digit 4 input
+      pbsync_o     : out  std_logic_vector(0 to 3);   -- Button synchronization output
+      cntr0_i      : in   std_logic_vector(0 to 3);   -- Counter Digit 1 input
+      cntr1_i      : in   std_logic_vector(0 to 3);   -- Counter Digit 2 input
+      cntr2_i      : in   std_logic_vector(0 to 3);   -- Counter Digit 3 input
+      cntr3_i      : in   std_logic_vector(0 to 3)    -- Counter Digit 4 input
     );
      end component;
   ----- Declare the signals used stimulating the design's inputs/outputs -----
@@ -74,10 +74,10 @@ begin
     port map (
       clk_i        => clk_i,
       reset_i      => reset_i,
-      BTNL_i       => '0',  -- Button Left
-      BTNR_i       => '0',  -- Button Right
-      BTNU_i       => '0',  -- Button Up
-      BTND_i       => '0',  -- Button Down
+      BTNL_i       => BTNL_i,  -- Button Left
+      BTNR_i       => BTNR_i,  -- Button Right
+      BTNU_i       => BTNU_i,  -- Button Up
+      BTND_i       => BTND_i,  -- Button Down
       SW_i         => SW_i,  -- Switches (16)
       swsync_o     => swsync_o,  -- Switch synchronization output
       LED_i        => LED_i,  -- LEDs (16)
@@ -121,24 +121,105 @@ begin
 
     -- Release reset
     reset_i <= '0';
-    SW_i <= "0000000000000001";  -- Activate switch 0
-    cntr0_i <= "0001";
-    LED_i <= "0000011110000000";
     wait for 1 sec;
 
-    -- Test switch synchronization
-    SW_i <= "0000000000000010";  -- Activate switch 1
-    cntr0_i <= "0010";
+	-- Test LEDs
+	LED_i <= "0000011110000000";
     wait for 1 sec;
+    LED_i <= "0000000000000000";
 
-    -- Test button synchronization
+    -- Test switches
+    for i in SW_i'range loop
+		SW_i(i) <= '1';  -- Activate switch
+		wait for 10 ms;
+	end loop;
+	
+    -- Test switch debounce
+    for i in SW_i'range loop
+		SW_i(i) <= '0';
+		wait for 2 ms;
+		SW_i(i) <= '1';
+		wait for 2 ms;
+		SW_i(i) <= '0';
+		wait for 1 ms;
+		SW_i(i) <= '1';
+		wait for 5 ms;
+	end loop;
+	wait for 1 sec;
+    SW_i <= "0000000000000000";
+
+    -- Test buttons
     BTNL_i <= '1';  -- Press Button Left
-    wait for 1 sec;
+    wait for 10 ms;
+    BTNR_i <= '1';  -- Press Button Left
+    wait for 10 ms;
+    BTNU_i <= '1';  -- Press Button Left
+    wait for 10 ms;
+    BTND_i <= '1';  -- Press Button Left
+    wait for 1010 ms;
 
-    BTNL_i <= '0';  -- Release Button Left
-    wait for 1 sec;
+	-- Test button debounce
+    BTNL_i <= '0';  
+	wait for 2 ms;
+    BTNL_i <= '1';  
+	wait for 2 ms;
+    BTNL_i <= '0';  
+	wait for 1 ms;
+    BTNL_i <= '1';  
+    wait for 5 ms;
+	
+    BTNR_i <= '0';  
+	wait for 2 ms;
+    BTNR_i <= '1';  
+	wait for 2 ms;
+    BTNR_i <= '0';  
+	wait for 1 ms;
+    BTNR_i <= '1';  
+    wait for 5 ms;
+	
+    BTNU_i <= '0';  
+	wait for 2 ms;
+    BTNU_i <= '1';  
+	wait for 2 ms;
+    BTNU_i <= '0';  
+	wait for 1 ms;
+    BTNU_i <= '1';  
+    wait for 5 ms;
+	
+    BTND_i <= '0';  
+	wait for 2 ms;
+    BTND_i <= '1';  
+	wait for 2 ms;
+    BTND_i <= '0';  
+	wait for 1 ms;
+    BTND_i <= '1';  
+    wait for 5 ms;
 
     wait for 1 sec;
+	
+	BTNL_i <= '0';
+    BTNR_i <= '0';
+    BTNU_i <= '0';
+    BTND_i <= '0';
+
+	-- Test 7s display
+    cntr0_i <= "0001";
+    cntr1_i <= "0011";
+    cntr2_i <= "0010";
+    cntr3_i <= "0101";
+	wait for 1 sec;
+	
+	
+    cntr0_i <= "0000";
+    cntr1_i <= "0000";
+    cntr2_i <= "0000";
+    cntr3_i <= "0000";
+	wait for 1 sec;
+
+	
+	-- reset
+	reset_i <= '1';
+	wait for 500 ms;
 
   end process;
 

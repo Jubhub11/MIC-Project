@@ -21,13 +21,13 @@
 
 library IEEE;
 use IEEE.std_logic_1164.all;
-use IEEE.std_logic_unsigned.all;	--contains + operator
-use work.counter_constants_pkg.all;
+use IEEE.std_logic_unsigned.all;	-- contains + and - operators
+use work.counter_constants_pkg.all; -- contains project-specific constants
 
 architecture rtl of counter is
 	type std_logic_vector_array is array (natural range <>) of std_logic_vector(3 downto 0);	-- type declaration for counter array
 	signal s_cntr : std_logic_vector_array(0 to 3) := (others => (others => '0'));				-- all counters combined into array
-	signal s_10hzclk : std_logic;																-- scaled 10hz clock signal
+	signal s_10hzclk : std_logic;																-- scaled 10hz enable signal
 	signal s_clkcount : integer := 0;															-- counter for scaling clock signal
 begin	--rtl
 
@@ -57,7 +57,7 @@ begin	--rtl
 			v_cntr := (others => (others => '0'));
 		elsif (clk_i'event and clk_i = '1') then
 			if s_10hzclk = '1' then		-- 10hz enable signal
-				
+
 				-- CLEAR
 				if cntrclear_i = '1' then
 					v_cntr := (others => (others => '0'));

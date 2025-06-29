@@ -75,6 +75,7 @@ begin
     -- Initialize signals
     reset_i <= '1';
     sw_i <= (others => '0');  -- Initialize switches to '0'
+	pb_i <= (others => '0');
     
     -- Wait for a clock cycle
     wait for 100 ms;

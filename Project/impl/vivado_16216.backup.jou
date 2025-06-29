@@ -1,0 +1,46 @@
+#-----------------------------------------------------------
+# Vivado v2024.2 (64-bit)
+# SW Build 5239630 on Fri Nov 08 22:35:27 MST 2024
+# IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
+# SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
+# Start of session at: Sun Jun 29 20:12:58 2025
+# Process ID         : 16216
+# Current directory  : C:/Users/PC/Documents/School/FHTechnikum/Semester4/Microelectr/Projekt/MIC-Project/Project/impl
+# Command line       : vivado.exe -gui_launcher_event rodinguilauncherevent37900 C:\Users\PC\Documents\School\FHTechnikum\Semester4\Microelectr\Projekt\MIC-Project\Project\impl\Project_Counter.xpr
+# Log file           : C:/Users/PC/Documents/School/FHTechnikum/Semester4/Microelectr/Projekt/MIC-Project/Project/impl/vivado.log
+# Journal file       : C:/Users/PC/Documents/School/FHTechnikum/Semester4/Microelectr/Projekt/MIC-Project/Project/impl\vivado.jou
+# Running On         : DESKTOP-EHP1IHP
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 26100
+# Processor Detail   : AMD Ryzen 5 5600X 6-Core Processor             
+# CPU Frequency      : 3700 MHz
+# CPU Physical cores : 6
+# CPU Logical cores  : 12
+# Host memory        : 34268 MB
+# Swap memory        : 27917 MB
+# Total Virtual      : 62185 MB
+# Available Virtual  : 32459 MB
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/PC/Documents/School/FHTechnikum/Semester4/Microelectr/Projekt/MIC-Project/Project/impl/Project_Counter.xpr
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs synth_1 -jobs 6
+wait_on_run synth_1
+reset_run synth_1
+launch_runs synth_1 -jobs 6
+wait_on_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 6
+wait_on_run impl_1
+open_hw_manager
+connect_hw_server -allow_non_jtag
+open_hw_target
+set_property PROGRAM.FILE {C:/Users/PC/Documents/School/FHTechnikum/Semester4/Microelectr/Projekt/MIC-Project/Project/impl/Project_Counter.runs/impl_1/cntr_top.bit} [get_hw_devices xc7a35t_0]
+current_hw_device [get_hw_devices xc7a35t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a35t_0] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {C:/Users/PC/Documents/School/FHTechnikum/Semester4/Microelectr/Projekt/MIC-Project/Project/impl/Project_Counter.runs/impl_1/cntr_top.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+close_hw_manager

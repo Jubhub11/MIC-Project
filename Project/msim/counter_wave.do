@@ -21,6 +21,7 @@
 
 onerror {resume}
 add wave -noupdate -format logic /tb_counter/clk_i
+add wave -noupdate -format logic /tb_counter/i_counter/s_10hzclk
 add wave -noupdate -format logic /tb_counter/reset_i
 add wave -noupdate -format logic /tb_counter/cntrclear_i
 add wave -noupdate -format logic /tb_counter/cntrhold_i

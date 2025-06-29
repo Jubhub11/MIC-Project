@@ -22,4 +22,4 @@
 vsim -t ns -lib work work.tb_io_ctrl  
 view *
 do io_wave.do # define signals to display in Wave window  
-run 7 sec
+run 10 sec
